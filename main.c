@@ -51,16 +51,16 @@ void drive_back(void)
 uint16_t distance_f(uint8_t S)
 {
 	PORTC |= S;
-	PORTB |= (1<<PB0); //impuls
+	PORTB |= (1<<PB0);
 	_delay_us(10);
 	PORTB &= ~(1<<PB0);
-	while( !(PINB & (1<<PB1)));//pinb do czytania stanu // czekamy az ustawi sie na jeden (schodek)
+	while( !(PINB & (1<<PB1)));
 	TCNT1=0x00;
-	while( PINB & (1<<PB1));// czekamy a¿ bedzie zero (schodek)
+	while( PINB & (1<<PB1));
     uint16_t distance = TCNT1/56;
 	PORTC &= ~(S);
 	
-	printString("Odleglosc: ");
+	printString("Distance: ");
 	printWord(distance);
 	printString("\n\r");
 	return distance;
@@ -70,7 +70,7 @@ ISR(USART_RX_vect)
 {
 	manual_mode = 1;
 	button = receiveByte();
-	printString("Bajt: ");
+	printString("Received Byte: ");
 	transmitByte(button);
 }
 
@@ -82,33 +82,31 @@ int main(void)
 	
     DDRB = 0x01;
     DDRC = 0x3F;
-    TCNT1 = 0x00;          //aktualny stan licznika przechowywany jest w rejestrze TCNT1;
-    TCCR1B = (1<<CS10); // clk/1
+    TCNT1 = 0x00;
+    TCCR1B = (1<<CS10);
     drive_straight();
 	while (1) 
     {
 		if (manual_mode == 0)
 		{
-			// pierwszy przypadek, z prawej
-			printString("1. Sprawdzam z prawej\n\r");
+			printString("checking right side\n\r");
 			if ( distance_f(S1) < 20)
 			{
 				do
 				{
-					printString("2. Skrecam w lewo\n\r");
+					printString("Turn left\n\r");
 					turn_left();
 				}
 				while (distance_f(S1) < 30);
 			}
 			drive_straight();
 			
-			// drugi przypadek, z lewej
-			printString("3. Sprawdzam z lewej\n\r");
+			printString("checking left side\n\r");
 			if ( distance_f(S2) < 20)
 			{
 				do
 				{
-					printString("4. Skrecam w prawo\n\r");
+					printString("Turn right\n\r");
 					turn_right();
 				}
 				while (distance_f(S2) < 30);
@@ -116,7 +114,7 @@ int main(void)
 			drive_straight();
 			
 			// trzeci przypadek, prosto
-			printString("5. Sprawdzam na wprost\n\r");
+			printString("checking front\n\r");
 			if ( distance_f((S1|S2)) < 20)
 			{
 				uint16_t distance_S1 = distance_f(S1);
@@ -125,7 +123,7 @@ int main(void)
 				{
 					do
 					{
-						printString("6. Skrecam w prawo\n\r");
+						printString("Turn right\n\r");
 						turn_right();
 					}
 					while (distance_f((S1|S2)) < 30);
@@ -134,7 +132,7 @@ int main(void)
 				{
 					do
 					{
-						printString("7. Skrecam w lewo\n\r");
+						printString("Turn left\n\r");
 						turn_left();
 					}
 					while (distance_f((S1|S2)) < 30);
