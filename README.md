@@ -5,3 +5,7 @@ distance sensors witch are used to detect obstacles in the proximity of the robo
 With each control loop iteration, implemented algorithm tries to choose most appropriate movement direction.
 What is more, it is possible to steer the robot remotely by using serial commands.
 These can be sent wirelessly by using Bluetooth module.
+
+Links to YouToube videos:<br/>
+Automatic mode: https://www.youtube.com/watch?v=Ng702DOd7hY&feature=youtu.be <br/>
+Manual mode: https://www.youtube.com/watch?v=6a5cv-JZ7jo&feature=youtu.be
