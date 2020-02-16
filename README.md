@@ -8,4 +8,7 @@ These can be sent wirelessly by using Bluetooth module.
 
 Links to YouToube videos:<br/>
 Automatic mode: https://www.youtube.com/watch?v=Ng702DOd7hY&feature=youtu.be <br/>
-Manual mode: https://www.youtube.com/watch?v=6a5cv-JZ7jo&feature=youtu.be
+Manual mode: https://www.youtube.com/watch?v=6a5cv-JZ7jo&feature=youtu.be 
+
+Link to photo:<br/>
+https://drive.google.com/file/d/1nCQgWNUGiAbO-vqsDA50qLwNfxNWwedj/view?usp=sharing
