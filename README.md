@@ -6,7 +6,7 @@ With each control loop iteration, implemented algorithm tries to choose most app
 What is more, it is possible to steer the robot remotely by using serial commands.
 These can be sent wirelessly by using Bluetooth module.
 
-Links to YouToube videos:<br/>
+Links to YouTube videos:<br/>
 Automatic mode: https://www.youtube.com/watch?v=Ng702DOd7hY&feature=youtu.be <br/>
 Manual mode: https://www.youtube.com/watch?v=6a5cv-JZ7jo&feature=youtu.be 
 
